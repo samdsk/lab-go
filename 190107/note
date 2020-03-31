@@ -1,0 +1,3 @@
+tar tvf nomedelfile.tar
+
+go test |& tee output

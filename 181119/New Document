@@ -1,0 +1,116 @@
+//RPN migliorato 
+
+// TODO verificare passaggio per puntatore (così non sembra)
+
+package main
+import "fmt"
+import "strconv"
+
+var input string
+var accumulatore [4]float64
+
+
+func main() {
+
+	for {
+
+		fmt.Scanf("%s", &input)
+		in, err := strconv.ParseFloat(input, 64)
+ 		
+		switch {
+
+			case err==nil:
+
+				accumula(in)
+				fmt.Println(accumulatore)
+
+			case input=="+":
+
+				somma(accumulatore[0], accumulatore[1])
+				fmt.Println(accumulatore)
+
+			case input=="-":
+
+				sottrai(accumulatore[0], accumulatore[1])
+				fmt.Println(accumulatore)
+
+			case input=="*":
+
+				moltiplica(accumulatore)
+				fmt.Println(accumulatore)
+
+			case input=="/":
+
+				dividi(accumulatore)
+				fmt.Println(accumulatore)
+
+			case input=="q":
+				
+				goto end
+			
+			default:
+
+				fmt.Println("Errore. Il programma verrà terminato.")
+				goto end
+
+		}
+
+	}
+
+	end:
+}
+
+func accumula(a float64) {
+	
+	for i:=len(accumulatore)-1; i>0; i-- {
+
+		accumulatore[i]=accumulatore[i-1]
+
+	}
+
+	accumulatore[0]=a
+}
+
+func collassa(a float64) {
+
+	accumulatore[0]=a
+	
+	for i:=1; i<len(accumulatore)-1; i++ {
+
+		accumulatore[i]=accumulatore[i+1]
+
+	}
+}
+
+
+func somma(a, b float64) {
+	var r float64
+
+	r=a+b
+
+	collassa(r)
+}
+
+func sottrai(a, b float64) {
+	var r float64
+
+	r=a-b
+
+	collassa(r)
+}
+
+func moltiplica(a, b float64) {
+	var r float64
+
+	r=a*b
+
+	collassa(r)
+}
+
+func dividi(a, b float64) {
+	var r float64
+
+	r=a/b
+
+	collassa(r)
+}

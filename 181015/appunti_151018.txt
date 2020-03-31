@@ -1,0 +1,28 @@
+go build // compile
+go run //"skip" compiling just run
+
+code beautifiers
+go fmt // formatta il file e salva 
+gofmt // formatta e stampa a video
+
+Println	// print new line
+Scan	// scanf di C, input può essere separato con uno spazio
+
+import "fmt"	//standard library
+
+eog	// svg viewer
+
+rune // alias di int32
+
+Printf() 
+	%T // Stampa il tipo di variabile
+
+chmod a+x filename
+
++x
+
+
+filename | less
+
+
+the epoch 1 gen 1970 // data unix

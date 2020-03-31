@@ -1,0 +1,43 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"io"
+	"os"
+	"regexp"
+)
+
+func main() {
+	nomeFile := os.Args[1]
+
+	fileReader, err := os.Open(nomeFile)
+	defer fileReader.Close()
+
+	if err != nil {
+		fmt.Println("Error opening")
+		return
+	}
+	parole := make([]string, 0)
+	fileBfdReader := bufio.NewReader(fileReader)
+	for {
+		inputLine, isPrefix, err := fileBfdReader.ReadLine()
+		input := string(inputLine)
+
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			fmt.Println("Error reading")
+			return
+		}
+		//fmt.Print(inputLine)
+		var wordRegExp = regexp.MustCompile(`[a-zA-Z]+`) //sequenze di una o piu' lettere
+		//var wordRegExp = regexp.MustCompile(`\p{Latin}+`) //sequenze di una o piu' lettere
+		words := wordRegExp.FindAllString(input, -1) // -1 significa tutti
+		parole = append(parole, words...)
+	}
+	fmt.Println(parole)
+	fmt.Println(len(parole))
+
+}

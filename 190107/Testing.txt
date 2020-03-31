@@ -1,0 +1,65 @@
+/*
+TODO di oggi
+
+- testare usando soluzioni docenti
+
+- testare usando propria soluzione
+
+- scrivere alcuni test per lo stack realizzato il 19/nov/2018 (sul wiki)
+
+*/
+
+
+//Primo set di test
+package main
+import "testing"
+import "fmt"
+import "log"
+
+func TestPush(t *testing.T) {
+	
+	push(6)
+	a := fmt.Sprint(str())
+	fmt.Println("push(6), stack:", a, "(mi aspetto [6])")
+
+	if a != "[6]" {
+		log.Fatalf("Fallito: \"push\"")
+	}
+}
+
+func TestEmpty1(t *testing.T) {
+	fmt.Println("empty():", empty(), "(mi aspetto false)")
+	if empty() {
+		log.Fatalf("Fallito: \"empty\"")
+	}
+}
+
+func TestTop(t *testing.T) {
+
+	fmt.Println("top():", top(), "(mi aspetto 6)")
+	
+	if top() != 6 {
+		log.Fatalf("Fallito: \"top\"")
+	}
+}
+
+func TestPop(t *testing.T) {
+
+	a := fmt.Sprint(pop())
+	b := fmt.Sprint(str())
+	fmt.Println("pop():", a, "(mi aspetto 6)")
+	fmt.Println("stack:", b, "(mi aspetto [])")
+
+	if a != "6" || b != "[]" {
+		log.Fatalf("Fallito: \"pop\"")
+	}
+}
+
+func TestEmpty2(t *testing.T) {
+
+	fmt.Println("empty():", empty(), "(mi aspetto true)")
+
+	if !empty() {
+		log.Fatalf("Fallito: \"empty\"")
+	}
+}

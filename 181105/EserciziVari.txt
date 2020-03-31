@@ -1,0 +1,52 @@
+Scrivere un programma che legge un intero positivo n e 
+disegna una capanna
+
+  /\
+ //\\
+//  \\
+
+---
+
+
+Dati giorno e ora precisa di nascita di qualcuno, calcolare quando ha raggiunto (o raggiungerà) un miliardo di secondi di età
+
+---
+
+Quante occorrenze di un carattere in una stringa
+
+---
+
+stampare una stringa a rovescio	//Stringa ASCII? (POI RUNE)
+
+for range
+
+range
+
+for a rovescio
+
+package main
+import "fmt"
+
+func main() {
+	var s, sr string
+
+	fmt.Print("Inserire la stringa:	")
+	fmt.Scan(&s)
+
+	for _,c:= range s {
+				sr=string(c)+sr
+	}
+
+	fmt.Println(sr)
+}
+
+---
+
+Calcolare la distanza di Hamming tra due stringhe
+
+---
+
+Scrivere un programma "Clessidra" che prenda in ingresso un intero n e faccia il conto alla rovescia da n a 0 in secondi.
+Hint: leggere la funzioni Now, Since e Seconds del package "time". (Non usare Sleep)
+
+---
